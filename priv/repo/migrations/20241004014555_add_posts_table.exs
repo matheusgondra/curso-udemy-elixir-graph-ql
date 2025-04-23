@@ -7,7 +7,7 @@ defmodule Twix.Repo.Migrations.AddPostsTable do
       add :likes, :integer, default: 0
       add :user_id, references(:users, on_delete: :delete_all)
 
-      timestamps(inserted_at: :created_at)
+      timestamps()
     end
 
     create index(:posts, [:user_id])

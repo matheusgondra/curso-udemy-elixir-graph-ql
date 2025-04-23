@@ -7,7 +7,7 @@ defmodule Twix.Repo.Migrations.AddUsersTable do
       add :email, :string
       add :age, :integer
 
-      timestamps(inserted_at: :created_at)
+      timestamps()
     end
 
     create unique_index(:users, [:nickname])

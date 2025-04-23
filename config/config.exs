@@ -11,6 +11,8 @@ config :twix,
   ecto_repos: [Twix.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :twix, Twix.Repo, migration_timestamps: [inserted_at: :created_at]
+
 # Configures the endpoint
 config :twix, TwixWeb.Endpoint,
   url: [host: "localhost"],
