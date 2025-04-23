@@ -4,6 +4,7 @@ defmodule Twix.Users.User do
   import Ecto.Changeset
 
   alias Twix.Posts.Post
+  alias Twix.Users.Follower
 
   @required_params ~w(nickname email age)a
 
@@ -13,6 +14,8 @@ defmodule Twix.Users.User do
           email: String.t(),
           age: integer(),
           posts: list(Post.t()),
+          followers: list(Follower.t()),
+          following: list(Follower.t()),
           created_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
@@ -23,6 +26,8 @@ defmodule Twix.Users.User do
     field :age, :integer
 
     has_many :posts, Post
+    has_many :followers, Follower, foreign_key: :following_id
+    has_many :following, Follower, foreign_key: :follower_id
 
     timestamps(inserted_at: :created_at)
   end
